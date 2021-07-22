@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./modules/registration/registration.module').then(m => m.RegistrationModule)
+  },
+  {
+    path: 'backoffice',
+    loadChildren: () => import('./modules/backoffice/backoffice.module').then(m => m.BackofficeModule)
   }
 ];
 
