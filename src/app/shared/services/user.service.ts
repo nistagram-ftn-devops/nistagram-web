@@ -43,6 +43,18 @@ export class UserService {
     return this.apiService.post(`${this.BASE_PATH}/user/user/register`, payload)
   }
 
+  getAllAgents(): Observable<User[]> {
+    return this.apiService.get(`${this.BASE_PATH}/user/user/agents`)
+  }
+
+  approveAgent(id: number): Observable<User> {
+    return this.apiService.get(`${this.BASE_PATH}/user/user/${id}/accept`)
+  }
+
+  declineAgent(id: number): Observable<User> {
+    return this.apiService.get(`${this.BASE_PATH}/user/user/${id}/decline`)
+  }
+
   set token(jwt: string) {
     localStorage.setItem('token', jwt)
   }

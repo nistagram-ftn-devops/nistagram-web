@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ToastrService } from 'ngx-toastr'
-import { UserLogin } from 'src/app/shared/models/user.models';
+import { UserLogin, UserRole } from 'src/app/shared/models/user.models';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,11 @@ export class LoginComponent implements OnInit {
 
     this.userService.login({ username, password }).subscribe((res: UserLogin) => {
       this.userService.loginUser(res)
-      this.router.navigate(['/'])
+      if (res.user.role === UserRole.admin) {
+        this.router.navigate(['/backoffice'])
+      } else {
+        this.router.navigate(['/'])
+      }
     }, err => {
       this.toastr.error('Login error')
     })
