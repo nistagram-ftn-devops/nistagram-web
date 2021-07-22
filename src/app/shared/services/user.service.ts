@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserLogin, UserRole } from '../models/user.models';
+import { User, UserLogin, UserRegistration, UserRole } from '../models/user.models';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -37,6 +37,10 @@ export class UserService {
   logout(): void {
     localStorage.removeItem('token')
     localStorage.removeItem('role')
+  }
+
+  register(payload: UserRegistration): Observable<User> {
+    return this.apiService.post(`${this.BASE_PATH}/user/user/register`, payload)
   }
 
   set token(jwt: string) {
