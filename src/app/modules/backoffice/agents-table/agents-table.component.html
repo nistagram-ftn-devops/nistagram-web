@@ -1,0 +1,31 @@
+<h2>Agents</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let agent of agents">
+            <td>{{ agent.username }}</td>
+            <td>{{ agent.email }}</td>
+            <td>{{ agent.name }}</td>
+            <td>{{ agent.website }}</td>
+            <td>
+                <span *ngIf="!agent.adminReviewd">
+                    <button class="btn btn-primary btn-sm" (click)="approve(agent.id)">Approve</button>
+                    <button class="btn btn-danger btn-sm" (click)="decline(agent.id)">Decline</button>
+                </span>
+                <span *ngIf="agent.adminReviewd">
+                    <span *ngIf="agent.isActive">Accepted</span>
+                    <span *ngIf="!agent.isActive">Declined</span>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

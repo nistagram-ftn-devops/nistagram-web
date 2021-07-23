@@ -1,0 +1,16 @@
+<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="#">NISTAGRAM</a>
+      <div class="navbar-nav">
+        <div *ngIf="!isAuthenticated">
+          <button class="btn btn-light" (click)="onClickLogin()">Login</button>
+          <button class="btn btn-light" (click)="onClickRegister()">Register</button>
+        </div>
+        <div *ngIf="isAuthenticated">
+          <button class="btn btn-light" (click)="onClickLogout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

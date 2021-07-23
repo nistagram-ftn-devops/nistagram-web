@@ -1,0 +1,11 @@
+<div *ngIf="isAuthenticated">
+    Home page for authenticated user
+</div>
+
+<div *ngIf="!isAuthenticated">
+    <h3>Nistagram</h3>
+    <button>Login</button> 
+    or
+    <button>Register</button>
+    to continue
+</div>
