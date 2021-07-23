@@ -55,6 +55,10 @@ export class UserService {
     return this.apiService.get(`${this.BASE_PATH}/user/user/${id}/decline`)
   }
 
+  getUserInfo(username: string): Observable<User> {
+    return this.apiService.get(`${this.BASE_PATH}/user/user/profile/${username}`)
+  }
+
   set token(jwt: string) {
     localStorage.setItem('token', jwt)
   }
