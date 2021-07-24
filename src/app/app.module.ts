@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BackofficeModule } from './modules/backoffice/backoffice.module';
 import { ProfileModule } from './modules/profile/profile.module';
+import { PostPageModule } from './modules/post-page/post-page.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileModule } from './modules/profile/profile.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     BackofficeModule,
-    ProfileModule
+    ProfileModule,
+    PostPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
