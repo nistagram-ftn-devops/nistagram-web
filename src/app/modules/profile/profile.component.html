@@ -16,6 +16,8 @@
 </div>
 
 <div *ngIf="user.isPublic" class="d-flex justify-content-center">
-    images placeholder
+    <div *ngFor="let post of posts" class="m-2">
+        <img src="{{ post.media?.ImageUrl }}" width="200" height="200" />
+    </div>
 </div>
 
