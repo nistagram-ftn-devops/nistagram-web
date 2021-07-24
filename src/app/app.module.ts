@@ -7,13 +7,14 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './modules/login/login.module';
 import { HomeModule } from './modules/home/home.module';
 import { RegistrationModule } from './modules/registration/registration.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BackofficeModule } from './modules/backoffice/backoffice.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { PostPageModule } from './modules/post-page/post-page.module';
+import { AddTokenInterceptor } from './shared/interceptors/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { PostPageModule } from './modules/post-page/post-page.module';
     ProfileModule,
     PostPageModule
   ],
-  providers: [],
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

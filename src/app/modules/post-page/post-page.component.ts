@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Media } from 'src/app/shared/models/media.models';
-import { Post } from 'src/app/shared/models/post.models';
+import { Comment, Post } from 'src/app/shared/models/post.models';
 import { User } from 'src/app/shared/models/user.models';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { PostService } from 'src/app/shared/services/post.service';
@@ -18,17 +19,27 @@ export class PostPageComponent implements OnInit {
   post: Post
   author: User
   imageUrl: string = ''
+  form: FormGroup
 
   constructor(
+    private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
     private userService: UserService,
-    private mediaService: MediaService
+    private mediaService: MediaService,
   ) { }
+
+  get isAuthenticated(): boolean {
+    return this.userService.isAuthenticated()
+  }
 
   ngOnInit(): void {
     this.postId = this.activatedRoute.snapshot.params['id']
     this.getPost()
+
+    this.form = this.fb.group({
+      comment: ['', Validators.required]
+    })
   }
 
   private getPost(): void {
@@ -54,6 +65,20 @@ export class PostPageComponent implements OnInit {
   private getImage(id: number) {
     this.mediaService.getImage(id).subscribe((res: Media) => {
       this.imageUrl = res.ImageUrl
+    })
+  }
+
+  submit(): void {
+    const text = this.form.controls.comment.value
+
+    this.postService.postComment(text, this.postId).subscribe((res: Post) => {
+      const comment = new Comment()
+      comment.author = new User()
+      comment.author.username = this.author.username
+      comment.text = text
+      comment.createdAt = new Date().toString()
+      this.post.comments.push(comment)
+      this.form.controls.comment.setValue('')
     })
   }
 }
