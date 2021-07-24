@@ -1,4 +1,5 @@
 import { Media } from "./media.models"
+import { User } from "./user.models"
 
 export class Post {
     authorId: number
@@ -15,4 +16,5 @@ export class Comment {
     text: string
     authorId: number
     createdAt: string
+    author: User
 }

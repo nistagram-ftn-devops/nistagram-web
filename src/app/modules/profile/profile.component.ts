@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Media } from 'src/app/shared/models/media.models';
 import { Post } from 'src/app/shared/models/post.models';
 import { User } from 'src/app/shared/models/user.models';
@@ -21,7 +21,8 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, 
               private userService: UserService,
               private postService: PostService,
-              private mediaService: MediaService
+              private mediaService: MediaService,
+              private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -46,5 +47,9 @@ export class ProfileComponent implements OnInit {
         })
       }
     })
+  }
+
+  goToPost(post: Post): void {
+    this.router.navigate(['/post/' + post.id])
   }
 }

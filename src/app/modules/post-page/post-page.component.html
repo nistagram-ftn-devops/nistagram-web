@@ -1,0 +1,30 @@
+<div class="d-flex flex-row m-4 justify-content-center">
+    <img class="m-2 postimg" src="{{ imageUrl }}" height="500" width="auto" />
+    
+    <div>
+        <img src="../../../assets/profile_placeholder.png" width="50" height="50" />
+        <i>{{ post?.createdAt | date: 'dd/MM/yyyy' }}</i>
+        
+        <div class="d-flex flex-row">
+            <b>{{ author?.username }}</b> 
+        </div>
+        <div>
+            {{ post?.description }}
+        </div>
+    </div>
+</div>
+
+<div class="mb-2">
+    <button class="btn btn-sm btn-primary">Like</button>
+    <button class="btn btn-sm btn-primary">Favorite</button>
+</div>
+
+<div>
+    <h4>Comments</h4>
+    <div *ngFor="let comment of post?.comments">
+        <b>{{ comment.author?.username }}:</b>
+        <i>({{ comment.createdAt | date: 'dd/MM/yyyy' }})</i>
+        {{ comment.text }}
+    </div>
+</div>
+

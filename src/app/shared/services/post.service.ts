@@ -16,4 +16,8 @@ export class PostService {
   getPostsForUser(id: number): Observable<Post[]> {
     return this.apiService.get(`${this.BASE_PATH}/post/post/user/${id}`)
   }
+
+  getPost(id: number): Observable<Post> {
+    return this.apiService.get(`${this.BASE_PATH}/post/post/${id}`)
+  }
 }
