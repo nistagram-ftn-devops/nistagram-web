@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'backoffice',
     loadChildren: () => import('./modules/backoffice/backoffice.module').then(m => m.BackofficeModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
   }
 ];
 
