@@ -15,6 +15,7 @@ import { BackofficeModule } from './modules/backoffice/backoffice.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { PostPageModule } from './modules/post-page/post-page.module';
 import { AddTokenInterceptor } from './shared/interceptors/http.interceptor';
+import { FavoritesModule } from './modules/favorites/favorites.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddTokenInterceptor } from './shared/interceptors/http.interceptor';
     ToastrModule.forRoot(),
     BackofficeModule,
     ProfileModule,
-    PostPageModule
+    PostPageModule,
+    FavoritesModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
