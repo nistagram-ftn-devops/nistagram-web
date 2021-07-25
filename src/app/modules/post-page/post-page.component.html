@@ -16,7 +16,8 @@
 
 <div class="mb-2">
     <button class="btn btn-sm btn-primary">Like</button>
-    <button class="btn btn-sm btn-primary">Favorite</button>
+    <button class="btn btn-sm btn-primary" *ngIf="!isFavorite" (click)="addToFavorite()">Favorite</button>
+    <button class="btn btn-sm btn-primary" *ngIf="isFavorite" (click)="removeFavorite()">Remove favorite</button>
 </div>
 
 <div>

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Favorite } from 'src/app/shared/models/favorite.models';
 import { Media } from 'src/app/shared/models/media.models';
 import { Comment, Post } from 'src/app/shared/models/post.models';
 import { User } from 'src/app/shared/models/user.models';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { PostService } from 'src/app/shared/services/post.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -20,6 +23,8 @@ export class PostPageComponent implements OnInit {
   author: User
   imageUrl: string = ''
   form: FormGroup
+  isFavorite = false
+  favorite: Favorite
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +32,8 @@ export class PostPageComponent implements OnInit {
     private postService: PostService,
     private userService: UserService,
     private mediaService: MediaService,
+    private favoriteService: FavoriteService,
+    private toastr: ToastrService
   ) { }
 
   get isAuthenticated(): boolean {
@@ -53,6 +60,8 @@ export class PostPageComponent implements OnInit {
           c.author = res
         })
       }
+
+      // TODO: proveriti da li je post vec u favorite
     })
   }
 
@@ -79,6 +88,25 @@ export class PostPageComponent implements OnInit {
       comment.createdAt = new Date().toString()
       this.post.comments.push(comment)
       this.form.controls.comment.setValue('')
+    })
+  }
+
+  addToFavorite(): void {
+    this.favoriteService.addToFavorites(this.post).subscribe((res: Favorite) => {
+      this.toastr.success('Post added to favorites')
+      this.isFavorite = true
+      this.favorite = res
+    }, err => {
+      this.toastr.error('Error while adding post to favorites')
+    })
+  }
+
+  removeFavorite(): void {
+    this.favoriteService.deleteFavorite(this.favorite.id).subscribe(() => {
+      this.toastr.success('Post removed from favorites')
+      this.isFavorite = false
+    }, err => {
+      this.toastr.error('Error while removing post from favorites')
     })
   }
 }
