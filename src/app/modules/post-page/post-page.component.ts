@@ -61,7 +61,11 @@ export class PostPageComponent implements OnInit {
         })
       }
 
-      // TODO: proveriti da li je post vec u favorite
+      this.favoriteService.getMyFavorites().subscribe((res: Favorite[]) => {
+        this.favoriteService.myFavorites = res
+        this.favorite = this.favoriteService.isPostInFavorites(this.postId)  
+        if (this.favorite) this.isFavorite = true
+      })
     })
   }
 

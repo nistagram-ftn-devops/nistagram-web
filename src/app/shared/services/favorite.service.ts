@@ -13,6 +13,8 @@ export class FavoriteService {
 
   private readonly BASE_PATH = environment.apiBasePath
 
+  myFavorites: Favorite[] = []
+
   constructor(private apiService: ApiService, private userService: UserService) { }
 
   addToFavorites(post: Post): Observable<Favorite> {
@@ -24,5 +26,15 @@ export class FavoriteService {
 
   deleteFavorite(favoriteId: number) {
     return this.apiService.delete(`${this.BASE_PATH}/post/favorite/${favoriteId}`)
+  }
+
+  getMyFavorites() {
+    const userId = this.userService.user.id
+    return this.apiService.get(`${this.BASE_PATH}/post/favorite/${userId}`)
+  }
+
+  isPostInFavorites(postId: number): Favorite {
+    const found = this.myFavorites.find(f => f.post.id == postId)
+    return found
   }
 }

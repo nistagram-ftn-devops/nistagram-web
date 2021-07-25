@@ -30,4 +30,8 @@ export class ToolbarComponent implements OnInit {
     this.userService.logout()
     this.router.navigate(['/'])
   }
+
+  onClickFavorites(): void {
+    this.router.navigate(['/favorites'])
+  }
 }

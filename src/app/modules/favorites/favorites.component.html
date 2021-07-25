@@ -1,0 +1,7 @@
+<h2>My favorite posts</h2>
+
+<div *ngFor="let fav of favorites">
+    <img class="postimg" src="{{ fav.imageUrl }}" />
+    <p>{{ fav.post.description }}</p>
+    <button class="btn btn-sm btn-primary" (click)="seeDetails(fav.post)">See details</button>
+</div>
