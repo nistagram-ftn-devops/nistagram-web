@@ -13,6 +13,19 @@ export class User {
     website: string
 }
 
+export class UserUpdate {
+    biography: string
+    dateOfBirth: string
+    email: string
+    isPublic: boolean
+    name: string
+    phoneNum: string
+    role: string
+    username: string
+    website: string
+    password: string
+}
+
 export class UserLogin {
     user: User
     token: string

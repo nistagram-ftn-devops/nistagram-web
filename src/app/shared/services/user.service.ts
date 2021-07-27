@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User, UserLogin, UserRegistration, UserRole } from '../models/user.models';
+import { User, UserLogin, UserRegistration, UserRole, UserUpdate } from '../models/user.models';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -63,6 +63,10 @@ export class UserService {
 
   getUserInfoById(id: number): Observable<User> {
     return this.apiService.get(`${this.BASE_PATH}/user/user/profile/id/${id}`)
+  }
+
+  updateProfile(payload: UserUpdate): Observable<User> {
+    return this.apiService.put(`${this.BASE_PATH}/user/user/update`, payload)
   }
 
   get user(): User {
