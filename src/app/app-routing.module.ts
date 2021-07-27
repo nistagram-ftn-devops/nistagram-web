@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'favorites',
     loadChildren: () => import('./modules/favorites/favorites.module').then(m => m.FavoritesModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./modules/profile-settings/profile-settings.module').then(m => m.ProfileSettingsModule)
   }
 ];
 
