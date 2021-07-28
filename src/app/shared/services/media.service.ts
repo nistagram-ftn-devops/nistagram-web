@@ -16,4 +16,10 @@ export class MediaService {
   getImage(imageId: number): Observable<Media> {
     return this.apiService.get(`${this.BASE_PATH}/media/${imageId}`)
   }
+
+  uploadImage(image): Observable<Media> {
+    const data = new FormData()
+    data.append('file', image, image.name)
+    return this.apiService.post(`${this.BASE_PATH}/media`, data)
+  }
 }

@@ -38,4 +38,8 @@ export class ToolbarComponent implements OnInit {
   onClickSettings(): void {
     this.router.navigate(['/settings'])
   }
+
+  onClickCreatePost(): void {
+    this.router.navigate(['/create-post'])
+  }
 }
