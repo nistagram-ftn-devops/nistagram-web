@@ -26,4 +26,8 @@ export class PostService {
     const authorId = this.userService.user.id
     return this.apiService.post(`${this.BASE_PATH}/post/post/${id}/comment`, { text, authorId })
   }
+
+  createPost(post: Post): Observable<Post> {
+    return this.apiService.post(`${this.BASE_PATH}/post/post`, post)
+  }
 }

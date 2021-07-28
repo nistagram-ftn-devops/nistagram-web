@@ -25,8 +25,8 @@
     <div *ngIf="isAuthenticated">
         <form [formGroup]="form" (submit)="submit()">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="comment">
+                <label for="comment">Comment</label>
+                <input type="text" class="form-control" id="comment" placeholder="Enter comment" formControlName="comment">
             </div>
         
             <button type="submit" class="btn btn-sm btn-primary" [disabled]="form.invalid">

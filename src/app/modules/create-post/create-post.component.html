@@ -1,0 +1,17 @@
+<div>
+    <h3>Create post</h3>
+
+    <div>
+        <label for="file">Choose file</label>
+        <input class="form-control" type="file" (change)="onFileChanged($event)" id="file">
+    </div>
+
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Enter description" formControlName="description">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Create</button>
+    </form>
+</div>

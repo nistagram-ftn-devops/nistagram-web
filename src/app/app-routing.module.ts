@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./modules/profile-settings/profile-settings.module').then(m => m.ProfileSettingsModule)
+  },
+  {
+    path: 'create-post',
+    loadChildren: () => import('./modules/create-post/create-post.module').then(m => m.CreatePostModule)
   }
 ];
 
