@@ -45,6 +45,10 @@ export class UserService {
     return this.apiService.post(`${this.BASE_PATH}/user/user/register`, payload)
   }
 
+  registerAgent(payload: UserRegistration): Observable<User> {
+    return this.apiService.post(`${this.BASE_PATH}/user/user/register-agent`, payload)
+  }
+
   getAllAgents(): Observable<User[]> {
     return this.apiService.get(`${this.BASE_PATH}/user/user/agents`)
   }

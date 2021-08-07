@@ -50,7 +50,7 @@ export class CreatePostComponent implements OnInit {
       post.authorId = this.userService.user.id
       post.imageId = +res.Id
       post.description = description
-      
+
       this.postService.createPost(post).subscribe((res: Post) => {
         this.toastr.success('Post successfully created')
         this.router.navigate(['/post/' + res.id])
