@@ -42,4 +42,8 @@ export class ToolbarComponent implements OnInit {
   onClickCreatePost(): void {
     this.router.navigate(['/create-post'])
   }
+
+  onClickCampaings(): void {
+    this.router.navigate(['/campaigns'])
+  }
 }
