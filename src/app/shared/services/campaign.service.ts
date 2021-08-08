@@ -17,4 +17,8 @@ export class CampaignService {
   getMyCampaigns(): Observable<Campaign[]> {
     return this.apiService.get(this.BASE_PATH + '/campaign/author/' + this.userService.user.id)
   }
+
+  delete(id: number) {
+    return this.apiService.delete(this.BASE_PATH + '/campaign/' + id)
+  }
 }
