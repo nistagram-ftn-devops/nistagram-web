@@ -1,7 +1,8 @@
 export class Campaign {
     id: number
-    imageId: string
+    imageId: number
     website: string
     exposureDate: string
     createdAt: string
+    authorId: number
 }
