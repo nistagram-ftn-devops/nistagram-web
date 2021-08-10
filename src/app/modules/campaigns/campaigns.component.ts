@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Campaign } from 'src/app/shared/models/campaign.models';
 import { CampaignService } from 'src/app/shared/services/campaign.service';
@@ -12,7 +13,11 @@ export class CampaignsComponent implements OnInit {
 
   campaigns: Campaign[] = []
 
-  constructor(private campaignService: CampaignService, private toastr: ToastrService) { }
+  constructor(
+    private campaignService: CampaignService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.getMyCampaigns()
@@ -31,5 +36,9 @@ export class CampaignsComponent implements OnInit {
     }, error => {
       this.toastr.error('Error while removing campaign')
     })
+  }
+
+  addCampaign(): void {
+    this.router.navigate(['/campaigns/create'])
   }
 }

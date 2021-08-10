@@ -21,4 +21,8 @@ export class CampaignService {
   delete(id: number) {
     return this.apiService.delete(this.BASE_PATH + '/campaign/' + id)
   }
+
+  create(payload: Campaign): Observable<Campaign> {
+    return this.apiService.post(this.BASE_PATH + '/campaign', payload)
+  }
 }

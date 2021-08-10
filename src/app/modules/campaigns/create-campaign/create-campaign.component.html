@@ -1,0 +1,22 @@
+<div>
+    <h3>Create campaign</h3>
+
+    <div>
+        <label for="file">Choose file</label>
+        <input class="form-control" type="file" (change)="onFileChanged($event)" id="file">
+    </div>
+
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input type="text" class="form-control" id="website" placeholder="Enter website" formControlName="website">
+        </div>
+
+        <div class="form-group">
+            <label for="exposureDate">Exposure date and time</label>
+            <input type="datetime-local" class="form-control" id="exposureDate" placeholder="Enter datetime" formControlName="exposureDate">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
