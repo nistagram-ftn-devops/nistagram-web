@@ -47,4 +47,7 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/campaigns'])
   }
 
+  onClickFollow(): void {
+    this.router.navigate(['/follow'])
+  }
 }
