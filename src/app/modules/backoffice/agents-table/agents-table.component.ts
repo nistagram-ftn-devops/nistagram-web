@@ -50,4 +50,5 @@ export class AgentsTableComponent implements OnInit {
   gotoAddAgent(): void {
     this.router.navigate(['/backoffice/register-agent'])
   }
+
 }

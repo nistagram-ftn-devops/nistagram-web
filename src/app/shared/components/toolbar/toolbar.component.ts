@@ -46,4 +46,5 @@ export class ToolbarComponent implements OnInit {
   onClickCampaings(): void {
     this.router.navigate(['/campaigns'])
   }
+
 }
