@@ -1,0 +1,26 @@
+<h2>Campaigns</h2>
+
+<button class="btn btn-primary" (click)="addCampaign()">Add</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Website</th>
+            <th>Created at</th>
+            <th>Exposure date</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of campaigns">
+            <td>{{ c.id }}</td>
+            <td>{{ c.website }}</td>
+            <td>{{ c.createdAt }}</td>
+            <td>{{ c.exposureDate }}</td>
+            <td>
+                <button class="btn btn-sm btn-danger" (click)="remove(c)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

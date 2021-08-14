@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/models/user.models';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -12,7 +13,11 @@ export class AgentsTableComponent implements OnInit {
 
   agents: User[] = []
 
-  constructor(private userService: UserService, private toastr: ToastrService) { }
+  constructor(
+    private userService: UserService, 
+    private toastr: ToastrService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getAgents()
@@ -41,4 +46,9 @@ export class AgentsTableComponent implements OnInit {
       this.toastr.error('Error while declining agent')
     })
   }
+
+  gotoAddAgent(): void {
+    this.router.navigate(['/backoffice/register-agent'])
+  }
+
 }

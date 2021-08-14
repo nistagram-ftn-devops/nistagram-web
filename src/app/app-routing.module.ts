@@ -17,6 +17,30 @@ const routes: Routes = [
   {
     path: 'backoffice',
     loadChildren: () => import('./modules/backoffice/backoffice.module').then(m => m.BackofficeModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'post',
+    loadChildren: () => import('./modules/post-page/post-page.module').then(m => m.PostPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./modules/favorites/favorites.module').then(m => m.FavoritesModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./modules/profile-settings/profile-settings.module').then(m => m.ProfileSettingsModule)
+  },
+  {
+    path: 'create-post',
+    loadChildren: () => import('./modules/create-post/create-post.module').then(m => m.CreatePostModule)
+  },
+  {
+    path: 'campaigns',
+    loadChildren: () => import('./modules/campaigns/campaigns.module').then(m => m.CampaignsModule)
   }
 ];
 
