@@ -7,7 +7,6 @@ import { RegisterAgentComponent } from './register-agent/register-agent.componen
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     BackofficeComponent,
@@ -18,6 +17,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BackofficeRoutingModule,
     ReactiveFormsModule,
+  ],
+  imports: [
+    CommonModule,
+    BackofficeRoutingModule
   ]
 })
 export class BackofficeModule { }
