@@ -1,0 +1,23 @@
+<h3>Follow requests</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let f of followRequests">
+            <td>{{ f.user?.username }}</td>
+            <td>{{ f.user?.email }}</td>
+            <td>{{ f.user?.name }}</td>
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="accept(f.id)">Accept</button>
+                <button class="btn btn-sm btn-danger" (click)="decline(f.id)">Decline</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path: 'campaigns',
     loadChildren: () => import('./modules/campaigns/campaigns.module').then(m => m.CampaignsModule)
+  },
+  {
+    path: 'follow',
+    loadChildren: () => import('./modules/follow/follow.module').then(m => m.FollowModule)
   }
 ];
 
