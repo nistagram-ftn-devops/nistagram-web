@@ -144,7 +144,7 @@ export class PostPageComponent implements OnInit {
   }
 
   dislike(): void {
-    this.ratingService.like(this.postId).subscribe((res: Rating) => {
+    this.ratingService.dislike(this.postId).subscribe((res: Rating) => {
       this.getLikesDislikes()
       this.toastr.success('Post disliked')
     }, err => {
