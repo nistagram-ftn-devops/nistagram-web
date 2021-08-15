@@ -14,8 +14,16 @@
     </div>
 </div>
 
+<div>
+    Likes: {{ numLikes }}
+    Dislikes: {{ numDislikes }}
+</div>
+
 <div class="mb-2">
-    <button class="btn btn-sm btn-primary">Like</button>
+    <button class="btn btn-sm btn-primary" (click)="like()">Like</button>
+    <button class="btn btn-sm btn-secondary" (click)="dislike()">Dislike</button>
+    <button class="btn btn-sm btn-secondary" (click)="removeRating()">Remove rating</button>
+
     <button class="btn btn-sm btn-primary" *ngIf="!isFavorite" (click)="addToFavorite()">Favorite</button>
     <button class="btn btn-sm btn-primary" *ngIf="isFavorite" (click)="removeFavorite()">Remove favorite</button>
 </div>
