@@ -18,9 +18,5 @@ import { ReactiveFormsModule } from '@angular/forms';
     BackofficeRoutingModule,
     ReactiveFormsModule,
   ],
-  imports: [
-    CommonModule,
-    BackofficeRoutingModule
-  ]
 })
 export class BackofficeModule { }
