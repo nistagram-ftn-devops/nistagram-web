@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'follow',
     loadChildren: () => import('./modules/follow/follow.module').then(m => m.FollowModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./modules/search-page/search-page.module').then(m => m.SearchPageModule)
   }
 ];
 

@@ -20,6 +20,7 @@ import { ProfileSettingsModule } from './modules/profile-settings/profile-settin
 import { CreatePostModule } from './modules/create-post/create-post.module';
 import { CampaignsModule } from './modules/campaigns/campaigns.module';
 import { FollowModule } from './modules/follow/follow.module';
+import { SearchPageModule } from './modules/search-page/search-page.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FollowModule } from './modules/follow/follow.module';
     ProfileSettingsModule,
     CreatePostModule,
     CampaignsModule,
-    FollowModule
+    FollowModule,
+    SearchPageModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

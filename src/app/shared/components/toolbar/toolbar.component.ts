@@ -50,4 +50,8 @@ export class ToolbarComponent implements OnInit {
   onClickFollow(): void {
     this.router.navigate(['/follow'])
   }
+
+  onClickSearch(): void {
+    this.router.navigate(['/search'])
+  }
 }
