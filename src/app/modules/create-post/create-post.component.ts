@@ -50,6 +50,8 @@ export class CreatePostComponent implements OnInit {
       post.authorId = this.userService.user.id
       post.imageId = +res.Id
       post.description = description
+      post.authorUsername = this.userService.user.username
+      post.isPublic = this.userService.user.isPublic
 
       this.postService.createPost(post).subscribe((res: Post) => {
         this.toastr.success('Post successfully created')

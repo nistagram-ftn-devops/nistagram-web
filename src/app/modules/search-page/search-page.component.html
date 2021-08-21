@@ -1,0 +1,15 @@
+<h2>Search</h2>
+
+<div class="form-group">
+    <label for="keyword">Search keyword</label>
+    <input type="text" [(ngModel)]="keyword" class="form-control" id="keyword" placeholder="Enter search keyword" />
+</div>
+
+<button class="btn btn-primary" (click)="search()">Search</button>
+
+<div class="d-flex justify-content-center flex-wrap">
+    <div *ngFor="let post of posts" class="m-2">
+        <img src="{{ post.media?.ImageUrl }}" width="200" height="200" (click)="goToPost(post)" />
+    </div>
+</div>
+
