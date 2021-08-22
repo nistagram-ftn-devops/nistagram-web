@@ -41,4 +41,9 @@ export class FollowService {
     }
     return this.apiService.post(this.BASE_PATH + '/user/follow/do-i-follow', payload)
   }
+
+  getMyFollowing(): Observable<Follow[]> {
+    const userId = this.userService.user.id
+    return this.apiService.get(this.BASE_PATH + '/user/follow/following/' + userId)
+  }
 }

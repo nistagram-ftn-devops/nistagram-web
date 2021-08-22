@@ -34,4 +34,8 @@ export class PostService {
   search(keyword: string): Observable<Post[]> {
     return this.apiService.get(`${this.BASE_PATH}/post/post/search/` + keyword)
   }
+
+  home(userIds: number[]): Observable<Post[]> {
+    return this.apiService.patch(`${this.BASE_PATH}/post/post/home`, { userIds })
+  }
 }

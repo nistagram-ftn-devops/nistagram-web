@@ -1,5 +1,16 @@
+<h3>Nistagram homepage</h3>
+
 <div *ngIf="isAuthenticated">
-    Home page for authenticated user
+    <div class="card mb-3" style="width: 20rem;" *ngFor="let post of posts">
+        <img width="100" class="card-img-top" src="{{ post.media?.ImageUrl }}" alt="Post image">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ post.authorUsername }}</h5>
+          <p class="card-text">{{ post.description }}</p>
+          <p class="card-text"><small class="text-muted">{{ post.createdAt | date: 'dd/MM/yyyy'  }}</small></p>
+          <button class="btn btn-sm btn-primary" (click)="goToPost(post)">See details</button>
+        </div>
+    </div>
 </div>
 
 <div *ngIf="!isAuthenticated">
