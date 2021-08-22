@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -8,13 +9,24 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,  
+  ) { }
 
   ngOnInit(): void {
   }
 
   get isAuthenticated(): boolean {
     return this.userService.isAuthenticated()
+  }
+
+  onClickLogin(): void {
+    this.router.navigate(['/login'])
+  }
+
+  onClickRegister(): void {
+    this.router.navigate(['/register'])
   }
 
 }

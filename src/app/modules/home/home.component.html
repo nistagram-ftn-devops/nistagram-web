@@ -3,9 +3,9 @@
 </div>
 
 <div *ngIf="!isAuthenticated">
-    <h3>Nistagram</h3>
-    <button>Login</button> 
+    <h1>Nistagram</h1>
+    <button class="btn btn-sm btn-primary" (click)="onClickLogin()">Login</button> 
     or
-    <button>Register</button>
+    <button class="btn btn-sm btn-primary" (click)="onClickRegister()">Register</button>
     to continue
 </div>
