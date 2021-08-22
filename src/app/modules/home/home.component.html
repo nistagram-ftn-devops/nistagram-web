@@ -1,6 +1,6 @@
-<h3>Nistagram homepage</h3>
-
 <div *ngIf="isAuthenticated">
+    <h3>Nistagram homepage</h3>
+
     <div class="card mb-3" style="width: 20rem;" *ngFor="let post of posts">
         <img width="100" class="card-img-top" src="{{ post.media?.ImageUrl }}" alt="Post image">
 

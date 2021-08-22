@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   }
 
   getPosts(): void {
+    if (!this.userService.isAuthenticated()) return
+
     this.followService.getMyFollowing().subscribe((resFollow: Follow[]) => {
       console.log('follow', resFollow)
       

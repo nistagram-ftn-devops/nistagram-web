@@ -25,6 +25,10 @@ export class UserService {
     return this.role === UserRole.agent
   }
 
+  isRegularUser(): boolean {
+    return this.role === UserRole.user
+  }
+
   login(payload: { username: string, password: string}): Observable<UserLogin> {
     return this.apiService.post(`${this.BASE_PATH}/user/auth/login`, payload)
   }
