@@ -25,4 +25,8 @@ export class CampaignService {
   create(payload: Campaign): Observable<Campaign> {
     return this.apiService.post(this.BASE_PATH + '/campaign', payload)
   }
+
+  home(userIds: number[]): Observable<Campaign[]> {
+    return this.apiService.patch(`${this.BASE_PATH}/campaign/home`, { userIds })
+  }
 }

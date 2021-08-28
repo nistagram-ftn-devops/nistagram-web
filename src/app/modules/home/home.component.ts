@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Campaign } from 'src/app/shared/models/campaign.models';
 import { Follow } from 'src/app/shared/models/follow.models';
 import { Media } from 'src/app/shared/models/media.models';
 import { Post } from 'src/app/shared/models/post.models';
+import { CampaignService } from 'src/app/shared/services/campaign.service';
 import { FollowService } from 'src/app/shared/services/follow.service';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { PostService } from 'src/app/shared/services/post.service';
@@ -16,6 +18,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class HomeComponent implements OnInit {
 
   posts: Post[] = []
+  campaigns: Campaign[] = []
 
   constructor(
     private userService: UserService,
@@ -23,6 +26,7 @@ export class HomeComponent implements OnInit {
     private router: Router,  
     private mediaService: MediaService,
     private followService: FollowService,
+    private campaignService: CampaignService,
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +63,17 @@ export class HomeComponent implements OnInit {
           })
         }
         console.log(this.posts)
+      })
+
+      this.campaignService.home(userIds).subscribe((res: Campaign[]) => {
+        console.log('kampanje', res)
+        this.campaigns = res
+
+        for (let c of this.campaigns) {
+          this.mediaService.getImage(c.imageId).subscribe((res: Media) => {
+            c.media = res
+          })
+        }
       })
     })
   }

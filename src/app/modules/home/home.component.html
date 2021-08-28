@@ -11,6 +11,16 @@
           <button class="btn btn-sm btn-primary" (click)="goToPost(post)">See details</button>
         </div>
     </div>
+
+    <div class="card mb-3" style="width: 20rem;" *ngFor="let campaign of campaigns">
+        <img width="100" class="card-img-top" src="{{ campaign.media?.ImageUrl }}" alt="Campaign image">
+
+        <div class="card-body">
+          <h5 class="card-title">ADVERT</h5>
+          <p class="card-text">{{ campaign.website }}</p>
+          <p class="card-text"><small class="text-muted">{{ campaign.createdAt | date: 'dd/MM/yyyy'  }}</small></p>
+        </div>
+    </div>
 </div>
 
 <div *ngIf="!isAuthenticated">
