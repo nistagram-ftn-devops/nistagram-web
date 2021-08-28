@@ -1,3 +1,5 @@
+import { Media } from "./media.models"
+
 export class Campaign {
     id: number
     imageId: number
@@ -5,4 +7,5 @@ export class Campaign {
     exposureDate: string
     createdAt: string
     authorId: number
+    media: Media
 }
