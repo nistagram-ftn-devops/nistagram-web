@@ -43,22 +43,6 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
-  onClickFavorites(): void {
-    this.router.navigate(['/favorites'])
-  }
-
-  onClickSettings(): void {
-    this.router.navigate(['/settings'])
-  }
-
-  onClickCreatePost(): void {
-    this.router.navigate(['/create-post'])
-  }
-
-  onClickCampaings(): void {
-    this.router.navigate(['/campaigns'])
-  }
-
   onClickFollow(): void {
     this.router.navigate(['/follow'])
   }
@@ -86,5 +70,4 @@ export class ToolbarComponent implements OnInit {
   onClickCampaings(): void {
     this.router.navigate(['/campaigns'])
   }
-
 }

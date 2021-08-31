@@ -5,18 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Favorite } from 'src/app/shared/models/favorite.models';
 import { Media } from 'src/app/shared/models/media.models';
 import { Comment, Post } from 'src/app/shared/models/post.models';
-<<<<<<< HEAD
 import { Rating } from 'src/app/shared/models/rating.models';
-=======
->>>>>>> main
 import { User } from 'src/app/shared/models/user.models';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { PostService } from 'src/app/shared/services/post.service';
-<<<<<<< HEAD
 import { RatingService } from 'src/app/shared/services/rating.service';
-=======
->>>>>>> main
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -33,11 +27,8 @@ export class PostPageComponent implements OnInit {
   form: FormGroup
   isFavorite = false
   favorite: Favorite
-<<<<<<< HEAD
   numLikes = 0
   numDislikes = 0
-=======
->>>>>>> main
 
   constructor(
     private fb: FormBuilder,
@@ -46,12 +37,8 @@ export class PostPageComponent implements OnInit {
     private userService: UserService,
     private mediaService: MediaService,
     private favoriteService: FavoriteService,
-<<<<<<< HEAD
     private toastr: ToastrService,
     private ratingService: RatingService,
-=======
-    private toastr: ToastrService
->>>>>>> main
   ) { }
 
   get isAuthenticated(): boolean {
@@ -84,7 +71,6 @@ export class PostPageComponent implements OnInit {
         this.favorite = this.favoriteService.isPostInFavorites(this.postId)  
         if (this.favorite) this.isFavorite = true
       })
-<<<<<<< HEAD
 
       this.getLikesDislikes()
     })
@@ -97,8 +83,6 @@ export class PostPageComponent implements OnInit {
 
     this.ratingService.getDislikes(this.postId).subscribe((res: Rating[]) => {
       this.numDislikes = res.length
-=======
->>>>>>> main
     })
   }
 
@@ -120,7 +104,7 @@ export class PostPageComponent implements OnInit {
     this.postService.postComment(text, this.postId).subscribe((res: Post) => {
       const comment = new Comment()
       comment.author = new User()
-      comment.author.username = this.author.username
+      comment.author.username = this.userService.user.username
       comment.text = text
       comment.createdAt = new Date().toString()
       this.post.comments.push(comment)

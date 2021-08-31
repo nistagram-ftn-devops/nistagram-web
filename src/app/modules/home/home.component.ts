@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit {
       const userIds = resFollow.map(r => r.followeeId)
       console.log(userIds)
 
+      if (userIds.length === 0) return
+
       this.postService.home(userIds).subscribe((res: Post[]) => {
         this.posts = res
         
