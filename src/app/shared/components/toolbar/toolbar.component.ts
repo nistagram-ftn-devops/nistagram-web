@@ -70,4 +70,21 @@ export class ToolbarComponent implements OnInit {
   onClickMyProfile(): void {
     this.router.navigate(['/profile/' + this.userService.user.username])
   }
+
+  onClickFavorites(): void {
+    this.router.navigate(['/favorites'])
+  }
+
+  onClickSettings(): void {
+    this.router.navigate(['/settings'])
+  }
+
+  onClickCreatePost(): void {
+    this.router.navigate(['/create-post'])
+  }
+
+  onClickCampaings(): void {
+    this.router.navigate(['/campaigns'])
+  }
+
 }
