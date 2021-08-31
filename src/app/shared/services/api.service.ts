@@ -24,4 +24,8 @@ export class ApiService {
   delete(url: string): Observable<any> {
     return this.http.delete(url)
   }
+
+  patch(url: string, payload: any): Observable<any> {
+    return this.http.patch(url, payload)
+  }
 }

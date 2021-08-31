@@ -19,6 +19,8 @@ import { FavoritesModule } from './modules/favorites/favorites.module';
 import { ProfileSettingsModule } from './modules/profile-settings/profile-settings.module';
 import { CreatePostModule } from './modules/create-post/create-post.module';
 import { CampaignsModule } from './modules/campaigns/campaigns.module';
+import { FollowModule } from './modules/follow/follow.module';
+import { SearchPageModule } from './modules/search-page/search-page.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { CampaignsModule } from './modules/campaigns/campaigns.module';
     FavoritesModule,
     ProfileSettingsModule,
     CreatePostModule,
-    CampaignsModule
+    CampaignsModule,
+    FollowModule,
+    SearchPageModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },

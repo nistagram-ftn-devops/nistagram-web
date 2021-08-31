@@ -6,12 +6,29 @@
         <div *ngIf="!isAuthenticated">
           <button class="btn btn-light" (click)="onClickLogin()">Login</button>
           <button class="btn btn-light" (click)="onClickRegister()">Register</button>
+          <button class="btn btn-light" (click)="onClickSearch()">Search</button>
         </div>
+
         <div *ngIf="isAuthenticated">
-          <button class="btn btn-light" (click)="onClickCampaings()">Campaings</button>
-          <button class="btn btn-light" (click)="onClickCreatePost()">Add post</button>
-          <button class="btn btn-light" (click)="onClickFavorites()">Favorites</button>
-          <button class="btn btn-light" (click)="onClickSettings()">Settings</button>
+          <button class="btn btn-light" (click)="onClickSearch()">Search</button>
+
+          <span *ngIf="isAgent">
+            <button class="btn btn-light" (click)="onClickCampaings()">Campaings</button>
+            <button class="btn btn-light" (click)="onClickCreatePost()">Add post</button>
+            <button class="btn btn-light" (click)="onClickFollow()">Follow</button>
+            <button class="btn btn-light" (click)="onClickFavorites()">Favorites</button>
+            <button class="btn btn-light" (click)="onClickSettings()">Settings</button>
+            <button class="btn btn-light" (click)="onClickMyProfile()">My profile</button>
+          </span>
+
+          <span *ngIf="isRegularUser">
+            <button class="btn btn-light" (click)="onClickCreatePost()">Add post</button>
+            <button class="btn btn-light" (click)="onClickFollow()">Follow</button>
+            <button class="btn btn-light" (click)="onClickFavorites()">Favorites</button>
+            <button class="btn btn-light" (click)="onClickSettings()">Settings</button>
+            <button class="btn btn-light" (click)="onClickMyProfile()">My profile</button>
+          </span>
+
           <button class="btn btn-light" (click)="onClickLogout()">Logout</button>
         </div>
       </div>

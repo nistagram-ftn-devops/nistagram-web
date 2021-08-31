@@ -4,7 +4,10 @@
     </div>
 
     <div class="m-2">
-        <h4>{{ user.username }}</h4>
+        <div>
+            <h4>{{ user.username }}</h4>
+            <button class="btn btn-primary" (click)="follow()">Follow</button>
+        </div>
         <p>{{ user.name }}</p>
         <p>Website: {{ user.website }}</p>
         <p>Bio: {{ user.biography }}</p>
@@ -15,7 +18,7 @@
     <h3>This profile is private</h3>
 </div>
 
-<div *ngIf="user.isPublic" class="d-flex justify-content-center">
+<div *ngIf="user.isPublic" class="d-flex justify-content-center flex-wrap">
     <div *ngFor="let post of posts" class="m-2">
         <img src="{{ post.media?.ImageUrl }}" width="200" height="200" (click)="goToPost(post)" />
     </div>

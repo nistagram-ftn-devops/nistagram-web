@@ -30,4 +30,12 @@ export class PostService {
   createPost(post: Post): Observable<Post> {
     return this.apiService.post(`${this.BASE_PATH}/post/post`, post)
   }
+
+  search(keyword: string): Observable<Post[]> {
+    return this.apiService.get(`${this.BASE_PATH}/post/post/search/` + keyword)
+  }
+
+  home(userIds: number[]): Observable<Post[]> {
+    return this.apiService.patch(`${this.BASE_PATH}/post/post/home`, { userIds })
+  }
 }

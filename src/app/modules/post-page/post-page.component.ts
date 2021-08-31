@@ -5,10 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Favorite } from 'src/app/shared/models/favorite.models';
 import { Media } from 'src/app/shared/models/media.models';
 import { Comment, Post } from 'src/app/shared/models/post.models';
+import { Rating } from 'src/app/shared/models/rating.models';
 import { User } from 'src/app/shared/models/user.models';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 import { MediaService } from 'src/app/shared/services/media.service';
 import { PostService } from 'src/app/shared/services/post.service';
+import { RatingService } from 'src/app/shared/services/rating.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -25,6 +27,8 @@ export class PostPageComponent implements OnInit {
   form: FormGroup
   isFavorite = false
   favorite: Favorite
+  numLikes = 0
+  numDislikes = 0
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +37,8 @@ export class PostPageComponent implements OnInit {
     private userService: UserService,
     private mediaService: MediaService,
     private favoriteService: FavoriteService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ratingService: RatingService,
   ) { }
 
   get isAuthenticated(): boolean {
@@ -66,6 +71,18 @@ export class PostPageComponent implements OnInit {
         this.favorite = this.favoriteService.isPostInFavorites(this.postId)  
         if (this.favorite) this.isFavorite = true
       })
+
+      this.getLikesDislikes()
+    })
+  }
+
+  private getLikesDislikes() {
+    this.ratingService.getLikes(this.postId).subscribe((res: Rating[]) => {
+      this.numLikes = res.length
+    })
+
+    this.ratingService.getDislikes(this.postId).subscribe((res: Rating[]) => {
+      this.numDislikes = res.length
     })
   }
 
@@ -87,7 +104,7 @@ export class PostPageComponent implements OnInit {
     this.postService.postComment(text, this.postId).subscribe((res: Post) => {
       const comment = new Comment()
       comment.author = new User()
-      comment.author.username = this.author.username
+      comment.author.username = this.userService.user.username
       comment.text = text
       comment.createdAt = new Date().toString()
       this.post.comments.push(comment)
@@ -111,6 +128,39 @@ export class PostPageComponent implements OnInit {
       this.isFavorite = false
     }, err => {
       this.toastr.error('Error while removing post from favorites')
+    })
+  }
+
+  like(): void {
+    this.ratingService.like(this.postId).subscribe((res: Rating) => {
+      this.getLikesDislikes()
+      this.toastr.success('Post liked')
+    }, err => {
+      if (err.error.message === 'already-rated')
+        this.toastr.error('Post already liked')
+      else 
+        this.toastr.error('Error while liking this post')
+    })
+  }
+
+  dislike(): void {
+    this.ratingService.dislike(this.postId).subscribe((res: Rating) => {
+      this.getLikesDislikes()
+      this.toastr.success('Post disliked')
+    }, err => {
+      if (err.error.message === 'already-rated')
+        this.toastr.error('Post already disliked')
+      else 
+        this.toastr.error('Error while disliking this post')
+    })
+  }
+
+  removeRating(): void {
+    this.ratingService.removeRating(this.postId).subscribe(() => {
+      this.getLikesDislikes()
+      this.toastr.success('Your rating is removed for this post')
+    }, err => {
+      this.toastr.error('Error while removing rating from this post')
     })
   }
 }

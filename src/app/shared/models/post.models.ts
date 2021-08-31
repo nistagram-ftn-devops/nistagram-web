@@ -9,6 +9,8 @@ export class Post {
     id: number
     imageId: number
     media: Media
+    authorUsername: string
+    isPublic: boolean
 }
 
 export class Comment {

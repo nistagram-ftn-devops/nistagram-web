@@ -18,6 +18,18 @@ export class ToolbarComponent implements OnInit {
     return this.userService.isAuthenticated()
   }
 
+  get isAdmin(): boolean {
+    return this.userService.isAdmin()
+  }
+
+  get isAgent(): boolean {
+    return this.userService.isAgent()
+  }
+
+  get isRegularUser(): boolean {
+    return this.userService.isRegularUser()
+  }
+
   onClickLogin(): void {
     this.router.navigate(['/login'])
   }
@@ -28,7 +40,19 @@ export class ToolbarComponent implements OnInit {
 
   onClickLogout(): void {
     this.userService.logout()
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
+  }
+
+  onClickFollow(): void {
+    this.router.navigate(['/follow'])
+  }
+
+  onClickSearch(): void {
+    this.router.navigate(['/search'])
+  }
+
+  onClickMyProfile(): void {
+    this.router.navigate(['/profile/' + this.userService.user.username])
   }
 
   onClickFavorites(): void {
@@ -46,5 +70,4 @@ export class ToolbarComponent implements OnInit {
   onClickCampaings(): void {
     this.router.navigate(['/campaigns'])
   }
-
 }
